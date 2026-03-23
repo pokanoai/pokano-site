@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokano｜AIなんでもガチ分析</title>
+    <meta name="description" content="どんな小さな疑問もAIでとことん深掘り。泥団子も恋愛も国際情勢も、同じ熱量で分析。くだらないことほど本気。">
+    <meta property="og:title" content="Pokano｜AIなんでもガチ分析">
+    <meta property="og:description" content="どんな小さな疑問もAIでとことん深掘り。くだらないことほど本気。">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+    <style>
+        :root {
+            --blue: #2196F3;
+            --purple: #7c3aed;
+            --dark: #1a1a2e;
+            --light: #f8faff;
+            --text: #333;
+            --text-dim: #666;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Segoe UI','Hiragino Sans','Noto Sans JP',sans-serif; background:var(--light); color:var(--text); line-height:1.7; }
+
+        .container { max-width:680px; margin:0 auto; padding:40px 20px; }
+
+        /* Hero */
+        .hero { text-align:center; padding:60px 20px 40px; }
+        .logo { width:120px; height:120px; border-radius:24px; margin:0 auto 20px; box-shadow:0 8px 30px rgba(33,150,243,0.15); }
+        .hero h1 { font-size:28px; font-weight:800; color:var(--dark); margin-bottom:4px; }
+        .hero .handle { font-size:15px; color:var(--blue); margin-bottom:16px; }
+        .hero .tagline { font-size:14px; color:var(--text-dim); max-width:400px; margin:0 auto 8px; }
+        .hero .meaning { font-size:12px; color:var(--purple); margin-bottom:24px; }
+
+        /* Social Icons */
+        .social-icons { display:flex; justify-content:center; gap:12px; margin-bottom:40px; }
+        .social-icon { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#fff; font-size:14px; font-weight:700; transition:transform 0.2s; }
+        .social-icon:hover { transform:scale(1.1); }
+
+        /* Section */
+        .section { margin-bottom:32px; }
+        .section-title { font-size:13px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; padding-left:4px; }
+
+        /* Content Cards */
+        .content-card { display:block; background:#fff; border:1px solid #e8ecf4; border-radius:12px; padding:20px; margin-bottom:12px; text-decoration:none; color:var(--text); transition:all 0.2s; }
+        .content-card:hover { box-shadow:0 4px 16px rgba(0,0,0,0.06); transform:translateY(-2px); }
+        .content-card h3 { font-size:15px; font-weight:700; margin-bottom:4px; }
+        .content-card p { font-size:13px; color:var(--text-dim); margin:0; }
+        .content-card .badge { display:inline-block; font-size:10px; padding:2px 8px; border-radius:8px; font-weight:600; margin-bottom:6px; }
+        .badge-free { background:#d1fae5; color:#059669; }
+        .badge-new { background:#dbeafe; color:#2563eb; }
+        .badge-coming { background:#fef3c7; color:#d97706; }
+
+        /* Link Buttons */
+        .link-btn { display:flex; align-items:center; gap:12px; background:#fff; border:1px solid #e8ecf4; border-radius:12px; padding:14px 20px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.2s; }
+        .link-btn:hover { box-shadow:0 4px 16px rgba(0,0,0,0.06); transform:translateY(-1px); }
+        .link-btn .icon { width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:#fff; flex-shrink:0; }
+        .link-btn .label { font-size:14px; font-weight:600; }
+        .link-btn .sublabel { font-size:12px; color:var(--text-dim); }
+        .link-btn .arrow { margin-left:auto; color:#ccc; font-size:18px; }
+
+        /* CTA */
+        .cta-card { background:linear-gradient(135deg, var(--blue), var(--purple)); border-radius:12px; padding:24px; text-align:center; color:#fff; margin-bottom:12px; }
+        .cta-card h3 { font-size:16px; margin-bottom:8px; }
+        .cta-card p { font-size:13px; opacity:0.85; margin-bottom:14px; }
+        .cta-btn { display:inline-block; background:#fff; color:var(--purple); font-weight:700; font-size:14px; padding:10px 28px; border-radius:8px; text-decoration:none; transition:transform 0.2s; }
+        .cta-btn:hover { transform:scale(1.05); }
+
+        /* Footer */
+        .footer { text-align:center; padding:30px 0; color:var(--text-dim); font-size:11px; }
+
+        @media (max-width:480px) {
+            .hero { padding:40px 10px 30px; }
+            .hero h1 { font-size:24px; }
+            .container { padding:20px 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+        <img src="logo.png" alt="Pokano" class="logo">
+        <h1>Pokano</h1>
+        <div class="handle">@pokano_ai</div>
+        <div class="tagline">どんな小さな疑問もAIでとことん深掘り。<br>泥団子も恋愛も国際情勢も、同じ熱量で分析。<br>くだらないことほど本気。</div>
+        <div class="meaning">Pokano = Poke（つつく好奇心）+ Ano（あの…気になる）</div>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://x.com/pokano_ai" target="_blank" class="social-icon" style="background:#000;" title="X">𝕏</a>
+        <a href="https://www.tiktok.com/@pokano_ai" target="_blank" class="social-icon" style="background:#010101;" title="TikTok">T</a>
+        <a href="https://www.youtube.com/@pokano_ai" target="_blank" class="social-icon" style="background:#ff0000;" title="YouTube">▶</a>
+        <a href="https://note.com/pokano_ai" target="_blank" class="social-icon" style="background:#2cb696;" title="note">N</a>
+        <a href="https://www.buymeacoffee.com/kanesaka849" target="_blank" class="social-icon" style="background:#FFDD00;color:#000;" title="Buy Me a Coffee">☕</a>
+    </div>
+
+    <!-- Articles -->
+    <div class="section">
+        <div class="section-title">Articles</div>
+
+        <a href="https://kanesaka849.github.io/japan-wc-tactics/" class="content-card" target="_blank">
+            <span class="badge badge-free">無料</span>
+            <h3>ただのサッカー好きがAIに考えさせた日本代表W杯戦術プラン</h3>
+            <p>世界の最新戦術理論を網羅的に分析し、日本代表のベスト戦術を設計</p>
+        </a>
+
+        <a href="https://kanesaka849.github.io/todai-strategy/" class="content-card" target="_blank">
+            <span class="badge badge-free">無料</span>
+            <h3>偏差値60から東大現役合格への完全戦略</h3>
+            <p>あらゆる学習理論・脳科学・モチベーション研究をAIに分析させた合格プラン</p>
+        </a>
+
+        <div class="content-card" style="cursor:default;opacity:0.7;">
+            <span class="badge badge-coming">Coming Soon</span>
+            <h3>AIに泥団子の作り方を本気で分析させてみた</h3>
+            <p>近日公開</p>
+        </div>
+
+        <div class="content-card" style="cursor:default;opacity:0.7;">
+            <span class="badge badge-coming">Coming Soon</span>
+            <h3>AI朝まで生テレビ：消費税は廃止すべきか？</h3>
+            <p>近日公開</p>
+        </div>
+    </div>
+
+    <!-- Links -->
+    <div class="section">
+        <div class="section-title">Links</div>
+
+        <a href="https://x.com/pokano_ai" target="_blank" class="link-btn">
+            <div class="icon" style="background:#000;">𝕏</div>
+            <div>
+                <div class="label">X (Twitter)</div>
+                <div class="sublabel">最新の分析をいち早くお届け</div>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+
+        <a href="https://www.tiktok.com/@pokano_ai" target="_blank" class="link-btn">
+            <div class="icon" style="background:#010101;">T</div>
+            <div>
+                <div class="label">TikTok</div>
+                <div class="sublabel">1分でわかるAI分析動画</div>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+
+        <a href="https://note.com/pokano_ai" target="_blank" class="link-btn">
+            <div class="icon" style="background:#2cb696;">N</div>
+            <div>
+                <div class="label">note</div>
+                <div class="sublabel">じっくり読める分析記事</div>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+
+        <a href="https://www.youtube.com/@pokano_ai" target="_blank" class="link-btn">
+            <div class="icon" style="background:#ff0000;">▶</div>
+            <div>
+                <div class="label">YouTube</div>
+                <div class="sublabel">ショート動画で深掘り分析</div>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+    </div>
+
+    <!-- CTA: Coffee -->
+    <div class="section">
+        <div class="cta-card">
+            <h3>☕ 応援する</h3>
+            <p>記事が役に立ったら、コーヒー1杯おごってください</p>
+            <a href="https://www.buymeacoffee.com/kanesaka849" target="_blank" class="cta-btn">Buy me a coffee</a>
+        </div>
+    </div>
+
+    <!-- Consulting -->
+    <div class="section">
+        <div class="section-title">Consulting</div>
+        <div class="content-card" style="border-left:3px solid var(--purple);">
+            <h3>AI活用コンサルティング</h3>
+            <p>企業向けにAIを活用した分析・コンテンツ制作・業務効率化をサポートします。</p>
+            <p style="margin-top:8px;font-size:13px;"><strong>お問い合わせ：</strong>ai_director@organic-work.com</p>
+            <p style="font-size:13px;">またはX (@pokano_ai) のDMへ</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2026 Pokano. All rights reserved.
+    </div>
+
+</div>
+
+</body>
+</html>
