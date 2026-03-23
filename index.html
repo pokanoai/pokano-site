@@ -10,33 +10,34 @@
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
 
         :root {
-            --blue: #4facfe;
+            --blue: #4f8efe;
             --purple: #7c3aed;
-            --pink: #f093fb;
-            --dark: #0a0a1a;
-            --card: rgba(255,255,255,0.06);
-            --card-border: rgba(255,255,255,0.1);
-            --glow-blue: rgba(79,172,254,0.3);
-            --glow-purple: rgba(124,58,237,0.3);
+            --pink: #ec4899;
+            --mint: #10b981;
+            --text: #1e293b;
+            --text-dim: #64748b;
+            --card: #ffffff;
+            --card-border: #e2e8f0;
+            --bg-start: #f0f4ff;
+            --bg-end: #faf5ff;
         }
 
         * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
             font-family:'Nunito','Hiragino Sans','Noto Sans JP',sans-serif;
-            background:var(--dark);
-            color:#fff;
+            color:var(--text);
             min-height:100vh;
             overflow-x:hidden;
         }
 
-        /* Animated gradient background */
+        /* Animated gradient background - light version */
         .bg-gradient {
             position:fixed;
             top:0; left:0; right:0; bottom:0;
-            background:linear-gradient(135deg, #0a0a1a 0%, #1a1040 25%, #0a1628 50%, #1a0a28 75%, #0a0a1a 100%);
+            background:linear-gradient(135deg, #f0f4ff 0%, #faf5ff 25%, #f0fdf4 50%, #fdf2f8 75%, #eff6ff 100%);
             background-size:400% 400%;
-            animation:gradientShift 15s ease infinite;
+            animation:gradientShift 20s ease infinite;
             z-index:-2;
         }
 
@@ -46,26 +47,27 @@
             100% { background-position:0% 50%; }
         }
 
-        /* Floating particles */
-        .particles {
+        /* Soft floating shapes */
+        .shapes {
             position:fixed;
             top:0; left:0; right:0; bottom:0;
             z-index:-1;
             overflow:hidden;
+            pointer-events:none;
         }
 
-        .particle {
+        .shape {
             position:absolute;
             border-radius:50%;
+            filter:blur(60px);
             opacity:0.15;
-            animation:floatParticle linear infinite;
+            animation:floatShape ease-in-out infinite;
         }
 
-        @keyframes floatParticle {
-            0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
-            10% { opacity:0.15; }
-            90% { opacity:0.15; }
-            100% { transform:translateY(-10vh) rotate(360deg); opacity:0; }
+        @keyframes floatShape {
+            0%,100% { transform:translate(0,0) scale(1); }
+            33% { transform:translate(30px,-20px) scale(1.05); }
+            66% { transform:translate(-20px,15px) scale(0.95); }
         }
 
         /* Floating icons */
@@ -78,18 +80,18 @@
 
         .float-icon {
             position:absolute;
-            font-size:24px;
-            opacity:0.08;
+            font-size:22px;
+            opacity:0.12;
             animation:floatIcon ease-in-out infinite;
         }
 
         @keyframes floatIcon {
             0%,100% { transform:translateY(0) rotate(0deg); }
-            50% { transform:translateY(-20px) rotate(10deg); }
+            50% { transform:translateY(-18px) rotate(8deg); }
         }
 
         /* Container */
-        .container { max-width:520px; margin:0 auto; padding:30px 20px; position:relative; }
+        .container { max-width:540px; margin:0 auto; padding:30px 20px; position:relative; }
 
         /* Hero */
         .hero { text-align:center; padding:50px 0 30px; }
@@ -101,30 +103,31 @@
         }
 
         .logo {
-            width:110px; height:110px;
-            border-radius:24px;
+            width:100px; height:100px;
+            border-radius:22px;
             position:relative;
             z-index:1;
+            box-shadow:0 8px 30px rgba(124,58,237,0.12);
             animation:logoPulse 3s ease-in-out infinite;
         }
 
         .logo-glow {
             position:absolute;
-            top:-10px; left:-10px; right:-10px; bottom:-10px;
-            border-radius:30px;
-            background:linear-gradient(135deg, var(--glow-blue), var(--glow-purple));
-            filter:blur(20px);
+            top:-8px; left:-8px; right:-8px; bottom:-8px;
+            border-radius:28px;
+            background:linear-gradient(135deg, rgba(79,142,254,0.2), rgba(124,58,237,0.2));
+            filter:blur(16px);
             animation:glowPulse 3s ease-in-out infinite;
         }
 
         @keyframes logoPulse {
             0%,100% { transform:scale(1); }
-            50% { transform:scale(1.03); }
+            50% { transform:scale(1.02); }
         }
 
         @keyframes glowPulse {
-            0%,100% { opacity:0.5; transform:scale(1); }
-            50% { opacity:0.8; transform:scale(1.1); }
+            0%,100% { opacity:0.4; transform:scale(1); }
+            50% { opacity:0.7; transform:scale(1.08); }
         }
 
         .hero h1 {
@@ -145,45 +148,48 @@
             100% { background-position:0% 50%; }
         }
 
-        .handle {
-            font-size:14px;
-            color:var(--blue);
-            margin-bottom:16px;
-            opacity:0.8;
-        }
+        .handle { font-size:14px; color:var(--purple); margin-bottom:16px; font-weight:700; }
 
         .tagline {
             font-size:14px;
-            color:rgba(255,255,255,0.6);
-            line-height:1.8;
+            color:var(--text-dim);
+            line-height:1.9;
             margin-bottom:8px;
         }
 
         .meaning {
-            font-size:12px;
+            display:inline-block;
+            font-size:11px;
             color:var(--purple);
-            opacity:0.7;
-            margin-bottom:28px;
+            background:rgba(124,58,237,0.06);
+            padding:4px 14px;
+            border-radius:20px;
+            margin-bottom:24px;
         }
 
         /* Typing animation */
         .typing-wrapper {
             display:inline-block;
             margin-bottom:24px;
+            background:var(--card);
+            padding:8px 18px;
+            border-radius:20px;
+            box-shadow:0 2px 12px rgba(0,0,0,0.04);
+            border:1px solid var(--card-border);
         }
 
         .typing {
             font-size:13px;
-            color:var(--blue);
-            border-right:2px solid var(--blue);
-            padding-right:4px;
+            color:var(--purple);
+            border-right:2px solid var(--purple);
+            padding-right:3px;
             animation:blink 0.8s infinite;
             white-space:nowrap;
             overflow:hidden;
         }
 
         @keyframes blink {
-            0%,100% { border-color:var(--blue); }
+            0%,100% { border-color:var(--purple); }
             50% { border-color:transparent; }
         }
 
@@ -196,8 +202,8 @@
         }
 
         .social-icon {
-            width:42px; height:42px;
-            border-radius:12px;
+            width:44px; height:44px;
+            border-radius:14px;
             display:flex;
             align-items:center;
             justify-content:center;
@@ -206,15 +212,12 @@
             font-size:15px;
             font-weight:700;
             transition:all 0.3s;
-            border:1px solid rgba(255,255,255,0.1);
-            background:rgba(255,255,255,0.05);
-            backdrop-filter:blur(10px);
+            box-shadow:0 3px 10px rgba(0,0,0,0.08);
         }
 
         .social-icon:hover {
-            transform:translateY(-4px) scale(1.1);
-            box-shadow:0 8px 25px rgba(79,172,254,0.3);
-            border-color:var(--blue);
+            transform:translateY(-4px) scale(1.08);
+            box-shadow:0 8px 25px rgba(0,0,0,0.12);
         }
 
         /* Section */
@@ -222,7 +225,7 @@
 
         .section-title {
             font-size:11px;
-            font-weight:700;
+            font-weight:900;
             color:var(--purple);
             text-transform:uppercase;
             letter-spacing:3px;
@@ -237,7 +240,7 @@
             content:'';
             flex:1;
             height:1px;
-            background:linear-gradient(to right, var(--purple), transparent);
+            background:linear-gradient(to right, rgba(124,58,237,0.2), transparent);
         }
 
         /* Content cards */
@@ -245,53 +248,51 @@
             display:block;
             background:var(--card);
             border:1px solid var(--card-border);
-            border-radius:14px;
+            border-radius:16px;
             padding:18px;
             margin-bottom:10px;
             text-decoration:none;
-            color:#fff;
+            color:var(--text);
             transition:all 0.3s;
-            backdrop-filter:blur(10px);
             position:relative;
             overflow:hidden;
+            box-shadow:0 2px 8px rgba(0,0,0,0.03);
         }
 
         .content-card::before {
             content:'';
             position:absolute;
             top:0; left:0; right:0;
-            height:2px;
-            background:linear-gradient(to right, var(--blue), var(--purple));
+            height:3px;
+            background:linear-gradient(to right, var(--blue), var(--purple), var(--pink));
             opacity:0;
             transition:opacity 0.3s;
         }
 
         .content-card:hover {
             transform:translateY(-3px);
-            border-color:rgba(79,172,254,0.3);
-            box-shadow:0 8px 30px rgba(79,172,254,0.1);
+            box-shadow:0 12px 30px rgba(124,58,237,0.08);
         }
 
         .content-card:hover::before { opacity:1; }
 
-        .content-card h3 { font-size:14px; font-weight:700; margin-bottom:4px; }
-        .content-card p { font-size:12px; color:rgba(255,255,255,0.5); margin:0; }
+        .content-card h3 { font-size:14px; font-weight:800; margin-bottom:4px; color:var(--text); }
+        .content-card p { font-size:12px; color:var(--text-dim); margin:0; }
 
         .badge {
             display:inline-block;
             font-size:10px;
-            padding:2px 8px;
-            border-radius:6px;
-            font-weight:700;
+            padding:3px 10px;
+            border-radius:8px;
+            font-weight:800;
             margin-bottom:6px;
         }
 
-        .badge-free { background:rgba(16,185,129,0.2); color:#34d399; border:1px solid rgba(16,185,129,0.3); }
-        .badge-new { background:rgba(79,172,254,0.2); color:var(--blue); border:1px solid rgba(79,172,254,0.3); }
-        .badge-coming { background:rgba(253,224,71,0.15); color:#fcd34d; border:1px solid rgba(253,224,71,0.2); }
-        .badge-paid { background:rgba(124,58,237,0.2); color:#a78bfa; border:1px solid rgba(124,58,237,0.3); }
+        .badge-free { background:#d1fae5; color:#059669; }
+        .badge-coming { background:#fef3c7; color:#d97706; }
+        .badge-paid { background:#ede9fe; color:#7c3aed; }
 
-        .card-coming { opacity:0.5; cursor:default; }
+        .card-coming { opacity:0.55; cursor:default; }
 
         /* Link buttons */
         .link-btn {
@@ -300,66 +301,66 @@
             gap:12px;
             background:var(--card);
             border:1px solid var(--card-border);
-            border-radius:12px;
+            border-radius:14px;
             padding:12px 16px;
             margin-bottom:8px;
             text-decoration:none;
-            color:#fff;
+            color:var(--text);
             transition:all 0.3s;
-            backdrop-filter:blur(10px);
+            box-shadow:0 2px 8px rgba(0,0,0,0.03);
         }
 
         .link-btn:hover {
             transform:translateX(6px);
-            border-color:rgba(79,172,254,0.3);
-            box-shadow:0 4px 20px rgba(79,172,254,0.1);
+            box-shadow:0 6px 20px rgba(124,58,237,0.08);
+            border-color:rgba(124,58,237,0.2);
         }
 
         .link-icon {
-            width:34px; height:34px;
-            border-radius:8px;
+            width:36px; height:36px;
+            border-radius:10px;
             display:flex;
             align-items:center;
             justify-content:center;
             font-size:14px;
             font-weight:700;
             flex-shrink:0;
+            color:#fff;
         }
 
         .link-label { font-size:13px; font-weight:700; }
-        .link-sub { font-size:11px; color:rgba(255,255,255,0.4); }
-        .link-arrow { margin-left:auto; color:rgba(255,255,255,0.2); transition:all 0.3s; }
-        .link-btn:hover .link-arrow { color:var(--blue); transform:translateX(4px); }
+        .link-sub { font-size:11px; color:var(--text-dim); }
+        .link-arrow { margin-left:auto; color:#ccc; transition:all 0.3s; }
+        .link-btn:hover .link-arrow { color:var(--purple); transform:translateX(4px); }
 
         /* CTA */
         .cta-card {
-            background:linear-gradient(135deg, rgba(79,172,254,0.15), rgba(124,58,237,0.15));
-            border:1px solid rgba(124,58,237,0.2);
-            border-radius:14px;
-            padding:24px;
+            background:linear-gradient(135deg, #ede9fe, #fce7f3);
+            border:1px solid rgba(124,58,237,0.1);
+            border-radius:16px;
+            padding:28px;
             text-align:center;
-            backdrop-filter:blur(10px);
         }
 
-        .cta-card h3 { font-size:18px; margin-bottom:6px; }
-        .cta-card p { font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:14px; }
+        .cta-card h3 { font-size:20px; margin-bottom:6px; color:var(--text); }
+        .cta-card p { font-size:13px; color:var(--text-dim); margin-bottom:16px; }
 
         .cta-btn {
             display:inline-block;
             background:linear-gradient(135deg, var(--blue), var(--purple));
             color:#fff;
-            font-weight:700;
-            font-size:13px;
-            padding:10px 28px;
-            border-radius:10px;
+            font-weight:800;
+            font-size:14px;
+            padding:12px 32px;
+            border-radius:12px;
             text-decoration:none;
             transition:all 0.3s;
-            box-shadow:0 4px 15px rgba(124,58,237,0.3);
+            box-shadow:0 4px 15px rgba(124,58,237,0.25);
         }
 
         .cta-btn:hover {
             transform:translateY(-2px) scale(1.05);
-            box-shadow:0 8px 25px rgba(124,58,237,0.4);
+            box-shadow:0 8px 25px rgba(124,58,237,0.35);
         }
 
         /* Consulting */
@@ -367,14 +368,14 @@
             background:var(--card);
             border:1px solid var(--card-border);
             border-left:3px solid var(--purple);
-            border-radius:14px;
+            border-radius:16px;
             padding:20px;
-            backdrop-filter:blur(10px);
+            box-shadow:0 2px 8px rgba(0,0,0,0.03);
         }
 
-        .consult-card h3 { font-size:15px; margin-bottom:6px; }
-        .consult-card p { font-size:12px; color:rgba(255,255,255,0.5); }
-        .consult-card a { color:var(--blue); text-decoration:none; }
+        .consult-card h3 { font-size:15px; margin-bottom:6px; font-weight:800; }
+        .consult-card p { font-size:12px; color:var(--text-dim); }
+        .consult-card a { color:var(--purple); text-decoration:none; font-weight:700; }
         .consult-card a:hover { text-decoration:underline; }
 
         /* Footer */
@@ -382,10 +383,10 @@
             text-align:center;
             padding:24px 0;
             font-size:11px;
-            color:rgba(255,255,255,0.2);
+            color:var(--text-dim);
+            opacity:0.5;
         }
 
-        /* Responsive */
         @media (max-width:480px) {
             .hero h1 { font-size:26px; }
             .container { padding:20px 14px; }
@@ -407,8 +408,6 @@
         .delay-3 { animation-delay:0.3s; }
         .delay-4 { animation-delay:0.4s; }
         .delay-5 { animation-delay:0.5s; }
-        .delay-6 { animation-delay:0.6s; }
-        .delay-7 { animation-delay:0.7s; }
     </style>
 </head>
 <body>
@@ -416,21 +415,26 @@
 <!-- Animated background -->
 <div class="bg-gradient"></div>
 
-<!-- Floating particles -->
-<div class="particles" id="particles"></div>
+<!-- Soft floating shapes -->
+<div class="shapes">
+    <div class="shape" style="width:300px;height:300px;background:#a78bfa;top:-5%;left:-5%;animation-duration:12s;"></div>
+    <div class="shape" style="width:250px;height:250px;background:#60a5fa;top:30%;right:-8%;animation-duration:15s;animation-delay:2s;"></div>
+    <div class="shape" style="width:200px;height:200px;background:#f9a8d4;bottom:10%;left:10%;animation-duration:18s;animation-delay:4s;"></div>
+    <div class="shape" style="width:180px;height:180px;background:#6ee7b7;top:60%;left:-10%;animation-duration:14s;animation-delay:1s;"></div>
+</div>
 
 <!-- Floating topic icons -->
 <div class="floating-icons">
-    <div class="float-icon" style="top:8%;left:5%;animation-duration:4s;font-size:28px;">⚽</div>
-    <div class="float-icon" style="top:15%;right:8%;animation-duration:5s;animation-delay:1s;font-size:22px;">📚</div>
-    <div class="float-icon" style="top:30%;left:8%;animation-duration:6s;animation-delay:0.5s;font-size:20px;">❤️</div>
-    <div class="float-icon" style="top:45%;right:5%;animation-duration:4.5s;animation-delay:2s;font-size:26px;">🧪</div>
-    <div class="float-icon" style="top:60%;left:3%;animation-duration:5.5s;animation-delay:1.5s;font-size:24px;">🔍</div>
-    <div class="float-icon" style="top:75%;right:10%;animation-duration:4s;animation-delay:0.8s;font-size:20px;">🧠</div>
-    <div class="float-icon" style="top:85%;left:12%;animation-duration:6s;animation-delay:2.5s;font-size:22px;">⭐</div>
-    <div class="float-icon" style="top:20%;left:85%;animation-duration:5s;animation-delay:1.2s;font-size:18px;">🎲</div>
-    <div class="float-icon" style="top:55%;left:90%;animation-duration:4.5s;animation-delay:0.3s;font-size:20px;">🌍</div>
-    <div class="float-icon" style="top:40%;left:15%;animation-duration:5.5s;animation-delay:1.8s;font-size:16px;">💡</div>
+    <div class="float-icon" style="top:8%;left:5%;animation-duration:4s;">⚽</div>
+    <div class="float-icon" style="top:15%;right:8%;animation-duration:5s;animation-delay:1s;">📚</div>
+    <div class="float-icon" style="top:32%;left:6%;animation-duration:6s;animation-delay:0.5s;">❤️</div>
+    <div class="float-icon" style="top:48%;right:4%;animation-duration:4.5s;animation-delay:2s;">🧪</div>
+    <div class="float-icon" style="top:62%;left:3%;animation-duration:5.5s;animation-delay:1.5s;">🔍</div>
+    <div class="float-icon" style="top:78%;right:10%;animation-duration:4s;animation-delay:0.8s;">🧠</div>
+    <div class="float-icon" style="top:88%;left:12%;animation-duration:6s;animation-delay:2.5s;">⭐</div>
+    <div class="float-icon" style="top:22%;left:88%;animation-duration:5s;animation-delay:1.2s;">🎲</div>
+    <div class="float-icon" style="top:55%;left:92%;animation-duration:4.5s;animation-delay:0.3s;">🌍</div>
+    <div class="float-icon" style="top:42%;left:15%;animation-duration:5.5s;animation-delay:1.8s;">💡</div>
 </div>
 
 <div class="container">
@@ -448,8 +452,7 @@
             泥団子も恋愛も国際情勢も、同じ熱量で分析。<br>
             くだらないことほど本気。
         </div>
-        <div class="meaning">Pokano = Poke（つつく好奇心）+ Ano（あの…気になる）</div>
-
+        <div class="meaning">Poke（つつく好奇心）+ Ano（あの…気になる）</div>
         <div class="typing-wrapper">
             <span class="typing" id="typingText"></span>
         </div>
@@ -457,11 +460,11 @@
 
     <!-- Social Icons -->
     <div class="social-icons fade-up delay-1">
-        <a href="https://x.com/pokano_ai" target="_blank" class="social-icon" title="X">𝕏</a>
-        <a href="https://www.tiktok.com/@pokano_ai" target="_blank" class="social-icon" title="TikTok">T</a>
-        <a href="https://www.youtube.com/@pokano_ai" target="_blank" class="social-icon" title="YouTube">▶</a>
-        <a href="https://note.com/pokano_ai" target="_blank" class="social-icon" title="note">N</a>
-        <a href="https://www.buymeacoffee.com/kanesaka849" target="_blank" class="social-icon" title="Coffee">☕</a>
+        <a href="https://x.com/pokano_ai" target="_blank" class="social-icon" style="background:#000;" title="X">𝕏</a>
+        <a href="https://www.tiktok.com/@pokano_ai" target="_blank" class="social-icon" style="background:linear-gradient(135deg,#25f4ee,#fe2c55);" title="TikTok">T</a>
+        <a href="https://www.youtube.com/@pokano_ai" target="_blank" class="social-icon" style="background:#ff0000;" title="YouTube">▶</a>
+        <a href="https://note.com/pokano_ai" target="_blank" class="social-icon" style="background:#2cb696;" title="note">N</a>
+        <a href="https://www.buymeacoffee.com/kanesaka849" target="_blank" class="social-icon" style="background:#FFDD00;color:#000;" title="Coffee">☕</a>
     </div>
 
     <!-- Articles -->
@@ -498,25 +501,25 @@
         <div class="section-title">Follow</div>
 
         <a href="https://x.com/pokano_ai" target="_blank" class="link-btn">
-            <div class="link-icon" style="background:rgba(255,255,255,0.1);">𝕏</div>
+            <div class="link-icon" style="background:#000;">𝕏</div>
             <div><div class="link-label">X (Twitter)</div><div class="link-sub">最新の分析をいち早くお届け</div></div>
             <div class="link-arrow">→</div>
         </a>
 
         <a href="https://www.tiktok.com/@pokano_ai" target="_blank" class="link-btn">
-            <div class="link-icon" style="background:rgba(255,255,255,0.1);">T</div>
+            <div class="link-icon" style="background:linear-gradient(135deg,#25f4ee,#fe2c55);">T</div>
             <div><div class="link-label">TikTok</div><div class="link-sub">1分でわかるAI分析動画</div></div>
             <div class="link-arrow">→</div>
         </a>
 
         <a href="https://note.com/pokano_ai" target="_blank" class="link-btn">
-            <div class="link-icon" style="background:rgba(255,255,255,0.1);">N</div>
+            <div class="link-icon" style="background:#2cb696;">N</div>
             <div><div class="link-label">note</div><div class="link-sub">じっくり読める分析記事</div></div>
             <div class="link-arrow">→</div>
         </a>
 
         <a href="https://www.youtube.com/@pokano_ai" target="_blank" class="link-btn">
-            <div class="link-icon" style="background:rgba(255,255,255,0.1);">▶</div>
+            <div class="link-icon" style="background:#ff0000;">▶</div>
             <div><div class="link-label">YouTube</div><div class="link-sub">ショート動画で深掘り分析</div></div>
             <div class="link-arrow">→</div>
         </a>
@@ -542,29 +545,13 @@
         </div>
     </div>
 
-    <div class="footer fade-up delay-6">
+    <div class="footer">
         &copy; 2026 Pokano. All rights reserved.
     </div>
 
 </div>
 
 <script>
-// Generate particles
-const particlesEl = document.getElementById('particles');
-const colors = ['#4facfe','#7c3aed','#f093fb','#34d399'];
-for(let i=0; i<30; i++){
-    const p = document.createElement('div');
-    p.classList.add('particle');
-    const size = Math.random()*4+2;
-    p.style.width = size+'px';
-    p.style.height = size+'px';
-    p.style.left = Math.random()*100+'%';
-    p.style.background = colors[Math.floor(Math.random()*colors.length)];
-    p.style.animationDuration = (Math.random()*15+10)+'s';
-    p.style.animationDelay = (Math.random()*10)+'s';
-    particlesEl.appendChild(p);
-}
-
 // Typing animation
 const phrases = [
     'あの…泥団子の最適な作り方って何ですか？',
